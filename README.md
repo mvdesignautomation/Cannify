@@ -104,6 +104,7 @@ Cannify aims to make food inventory management practical for home users who want
 - Record consumption and discarded quantities.
 - Access inventory information without relying on a cloud service.
 
+
 ## Repository
 
 Source code: [mvdesignautomation/Cannify](https://github.com/mvdesignautomation/Cannify)
@@ -113,3 +114,19 @@ Downloads: [Cannify Releases](https://github.com/mvdesignautomation/Cannify/rele
 ---
 
 Cannify is an independently developed project. Feature availability and behavior depend on the published application version.
+
+## Promotional Images
+
+![Cannify Promotional Image](<screenshots/Cannify promo.jpg>)
+
+## App Gallery
+
+![Cannify Image 1](screenshots/1.png)
+
+![Cannify Image 2](screenshots/2.png)
+
+![Cannify Image 3](screenshots/3.png)
+
+![Cannify Image 4](screenshots/4.png)
+
+![Cannify Image 5](screenshots/5.png)
