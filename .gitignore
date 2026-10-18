@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+artifacts/
+
+# Local tooling and caches
+.tanstack/
+.vercel/
+.grok/
+.node_modules.lock
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Android build output
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+
+# Signing keys and credentials
+*.jks
+*.keystore
+*.p12
+*.pfx
+key.properties
+google-services.json
+

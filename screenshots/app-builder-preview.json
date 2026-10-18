@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Cannify",
+      "hasCanvas": false,
+      "bodyTextLen": 308,
+      "bodyTextHash": "a3b9d1a453693f4e77d89b2509b6e31e429c118e96342701359d5bf18ccfb812",
+      "bodyTextPrefix": "Cannify LOCAL PANTRY Home Inventory Consume History Recently Del",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Cannify",
+      "hasCanvas": false,
+      "bodyTextLen": 265,
+      "bodyTextHash": "6d266084623c348eb8ff4fc4567e163d0dde6f914aba2d9e2fcd2e8ecd4ae61e",
+      "bodyTextPrefix": "Cannify OVERVIEW Your pantry Local food inventory on this device",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
