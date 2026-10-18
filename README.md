@@ -1,73 +1,115 @@
-# Cannify
+# Cannify — Offline Food Inventory Management
 
-Cannify is a local, offline-first food inventory and preservation app. It keeps food items, independent batches, quantities, dates, consumption, discards, item-level QR codes, history, and Recently Deleted on the device that is using it.
+Cannify is an offline-first food inventory management app for Android phones and tablets. It helps you organize home-preserved foods, pantry supplies, and other stored food items while tracking batches, quantities, production dates, and best-before dates.
 
-There is no account, no cloud, no backend, no AI, and no subscription. Core features work with the network turned off.
+Designed for local use, Cannify keeps inventory management on your device without requiring an account or cloud-based inventory service.
 
-## What it does
+## Features
 
-- Track food items with a name, optional category, image, and note
-- Keep multiple independent batches per item
-- Store original, good, and discarded quantities separately
-- Consume good quantity using FIFO (oldest applicable batch first)
-- Discard food in part or in full, with a required reason
-- Show an item-level QR code for consume / add-batch shortcuts
-- Record Added, Consumed, Discarded, and Restored events
-- Restore or permanently delete records from Recently Deleted
+- **Food inventory management** — Organize food items with names, photos, categories, and batch information.
+- **Batch-level tracking** — Record production dates, best-before dates, quantities, and notes for individual batches.
+- **FIFO consumption** — First-In, First-Out logic prioritizes older batches when consuming inventory.
+- **QR code support** — Generate and scan item QR codes to access inventory items and their available actions.
+- **Expiration reminders** — Schedule local notifications to help you keep track of approaching best-before dates.
+- **Inventory history** — Review recorded additions, consumption, discards, and restoration activity.
+- **Discard tracking** — Record unusable quantities and reasons for discarding food.
+- **Recently Deleted** — Restore supported deleted records or permanently remove them.
+- **Item photos** — Attach images to help identify stored food.
+- **Offline operation** — Core inventory features are designed to work without an internet connection.
 
-## Platform
+## Privacy and Data Storage
 
-This implementation is an installable web app designed for phones and tablets. All application data stays in the browser’s IndexedDB on that device.
+Cannify is designed for local, offline inventory management.
 
-The original product specification targets Flutter + SQLite/Drift for Android. This repository is the working local app with that product behavior, using a repository/service layer over a structured local database so the same rules can be ported to Flutter/Drift later without changing how Cannify works.
+- Inventory data is stored locally using IndexedDB.
+- No user account is required.
+- No cloud synchronization service is required for core functionality.
+- QR code generation and decoding are handled on-device.
+- Expiration reminders use local device notifications.
 
-## Technology
+**Important:** Local storage means your inventory data is associated with the device and app installation. Uninstalling the app, clearing its data, or losing the device may result in data loss. Keep any important information backed up separately if needed.
 
-- React 19
-- TanStack Start / Router / Query
-- Tailwind CSS
-- IndexedDB (local structured storage)
-- Zustand-free service layer with TanStack Query for reactive UI
-- `qrcode` for item QR generation
-- Browser `BarcodeDetector` for scanning
+## Download and Installation
 
-State management: **TanStack Query** talks to local repository functions. Mutations invalidate a shared `cannify` query key so inventory, history, and deleted views stay consistent. Business rules (FIFO, discard, restore) live in services, not widgets.
+The Android installation package is available from GitHub Releases:
 
-## Local data model
+**[Download Cannify for Android](https://github.com/mvdesignautomation/Cannify/releases)**
 
+1. Open the Releases page.
+2. Download the available `.apk` file.
+3. Open the downloaded file on your Android device.
+4. If prompted, allow installation from that source in your Android settings.
+5. Complete installation and open Cannify.
+
+Android may display a warning when installing an app outside an official app store. Only install packages obtained from a source you trust.
+
+## Technology Stack
+
+| Component | Technology |
+|---|---|
+| UI framework | React 19 |
+| Application framework and routing | TanStack Start and TanStack Router |
+| Programming language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| UI primitives | Radix UI |
+| Icons | Lucide React |
+| Android integration | Capacitor 8 |
+| Local database | IndexedDB |
+| QR code generation | `qrcode` |
+| QR code decoding | `jsQR` with browser API support where available |
+| Android package | `com.mvdesign.cannify` |
+
+### Architecture
+
+Cannify uses a web-based application interface packaged for Android through Capacitor. Its local database is implemented with IndexedDB, which is accessed through the app's JavaScript runtime.
+
+Capacitor provides the bridge between the web application and Android capabilities used by features such as camera access and local notifications.
+
+The application is designed to provide its core inventory functionality without depending on a remote backend.
+
+## Building from Source
+
+Cannify's source code is available in this repository.
+
+**Prerequisites**
+
+- Node.js and npm
+- Android Studio
+- Android SDK and the required build tools
+
+**Get the source code**
+
+```bash
+git clone https://github.com/mvdesignautomation/Cannify.git
+cd Cannify
 ```
-food items 1 ── * batches
-     │
-     └── history events (added / consumed / discarded / restored)
+
+Install the project dependencies:
+
+```bash
+npm ci
 ```
 
-- Deleting an item or batch is a soft delete (`status: deleted`) and appears in Recently Deleted.
-- Consume and discard never delete records. They change good/bad quantities and write history.
-- Original quantity is not overwritten by consume or discard.
+The project uses Vite-based tooling. Available development and Android build scripts depend on the current project configuration; inspect `package.json` for the supported commands before building.
 
-## Develop
+Android builds can be opened and managed through Android Studio using the project's Android configuration.
 
-```sh
-npm install
-npm run dev
-```
+## Project Goals
 
-```sh
-npm test
-npm run typecheck
-npm run build
-```
+Cannify aims to make food inventory management practical for home users who want to:
 
-Application logic tests for FIFO consumption and discard math live in `src/lib/cannify/fifo.test.ts`.
+- Keep track of stored food and home preserves.
+- Manage multiple batches of the same item.
+- Reduce waste by prioritizing older stock.
+- Record consumption and discarded quantities.
+- Access inventory information without relying on a cloud service.
 
-## Project structure
+## Repository
 
-```
-src/lib/cannify/     schema, IndexedDB, repositories/services, FIFO rules
-src/components/      UI primitives and Cannify feature components
-src/routes/          Home, Inventory, Consume, History, Recently Deleted, Scan
-```
+Source code: [mvdesignautomation/Cannify](https://github.com/mvdesignautomation/Cannify)
 
-## License
+Downloads: [Cannify Releases](https://github.com/mvdesignautomation/Cannify/releases)
 
-License choice is for the project owner to decide. This repository does not invent a license.
+---
+
+Cannify is an independently developed project. Feature availability and behavior depend on the published application version.
